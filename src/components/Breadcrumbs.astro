@@ -1,0 +1,95 @@
+---
+interface Props {
+  category: string;
+  subcategory?: string;
+}
+
+const { category, subcategory } = Astro.props;
+
+const categoryNames = {
+  'closets': 'ארונות',
+  'bedroom': 'חדר הורים',
+  'kids-room': 'חדרי ילדים',
+  'libraries': 'ספריות',
+  'dining': 'פינות אוכל',
+  'living-room': 'סלון',
+  'work': 'פינות עבודה',
+  'accessories': 'ריהוט משלים',
+  'extra-accessories': 'אביזרים'
+};
+
+const subcategoryNames = {
+  // Closets
+  'opening-closets': 'ארונות פתיחה',
+  'sliding-closets': 'ארונות הזזה',
+  'closet-rooms': 'חדרי ארונות',
+  'game-closets': 'ארון משחקים',
+  
+  // Bedroom
+  'jewish-bed': 'מיטה יהודית',
+  'double-bed': 'מיטה זוגית',
+  'upholstered-beds': 'מיטות מרופדות',
+  'bedrooms': 'חדרי שינה',
+  'single-and-half': 'מיטה וחצי',
+  
+  // Kids Room
+  'complete-kids-room': 'חדר ילדים קומפלט',
+  'youth-beds': 'מיטות נוער',
+  'bunk-beds': 'מיטות קומתיים',
+  
+  // Libraries
+  'Kodesh-libraries': 'ספריות קודש',
+  'modern-libraries': 'ספריות מודרני',
+  
+  // Living Room
+  'guest-sofas': 'ספות אירוח',
+  'seating-systems': 'מערכות ישיבה',
+  'single-seat': 'כורסאות',
+  'tv-furniture': 'ריהוט לטלויזיה',
+  'living-room-dresser': 'שידה לסלון',
+  'coffee-table': 'שולחן סלוני',
+
+  
+  // Dining
+  'dining-tables': 'שולחנות אוכל',
+  'chairs': 'כיסאות',
+  
+  // Work
+  'wall-units': 'כוורת לתלייה',
+  'work-desks': 'שולחנות עבודה',
+  'desk-tops': 'פלטות לשולחן עבודה',
+  'under-desk-units': 'יחידה שמתחת לפלטה',
+  'office-furniture': 'ריהוט משרדי',
+  
+  // Accessories
+  'vanity-mirror': 'טואלט ומראה',
+  'shoe-cabinets': 'ארונות נעליים',
+  'designer-dressers': 'שידות מעוצבות',
+  
+  // Extra Accessories
+  'handles': 'ידיות',
+  'legs': 'רגליים',
+  'coating-tiles': 'אריחי חיפוי',
+  'decorations': 'עיטורים'
+};
+---
+
+<nav class="mb-8">
+  <ol class="flex gap-2 text-gray-600">
+    <li>
+      <a href="/" class="hover:text-primary-600">דף הבית</a>
+    </li>
+    <li>/</li>
+    <li>
+      <a href={`/category/${category}`} class="hover:text-primary-600">
+        {categoryNames[category]}
+      </a>
+    </li>
+    {subcategory && (
+      <>
+        <li>/</li>
+        <li class="text-primary-600">{subcategoryNames[subcategory]}</li>
+      </>
+    )}
+  </ol>
+</nav>

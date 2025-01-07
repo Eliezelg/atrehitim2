@@ -1,0 +1,84 @@
+---
+interface Props {
+  images: {
+    src: string;
+    name: string;
+  }[];
+}
+
+const { images } = Astro.props;
+---
+
+<script define:vars={{ images }}>
+  let currentIndex = 0;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+  const closeLightbox = document.getElementById('close-lightbox');
+  const prevImage = document.getElementById('prev-image');
+  const nextImage = document.getElementById('next-image');
+
+  function showImage(index) {
+    currentIndex = index;
+    const image = images[index];
+    lightboxImage.src = image.src;
+    lightboxImage.alt = image.name;
+    lightboxCaption.textContent = image.name;
+  }
+
+  function openLightbox(index) {
+    showImage(index);
+    lightbox.classList.remove('hidden');
+    setTimeout(() => {
+      lightbox.classList.add('opacity-100');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightboxHandler() {
+    lightbox.classList.remove('opacity-100');
+    setTimeout(() => {
+      lightbox.classList.add('hidden');
+    }, 300);
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-lightbox-trigger]').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const index = parseInt(trigger.dataset.imageIndex);
+      openLightbox(index);
+    });
+  });
+
+  closeLightbox.addEventListener('click', closeLightboxHandler);
+
+  prevImage.addEventListener('click', () => {
+    const newIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(newIndex);
+  });
+
+  nextImage.addEventListener('click', () => {
+    const newIndex = (currentIndex + 1) % images.length;
+    showImage(newIndex);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('hidden')) {
+      if (e.key === 'Escape') {
+        closeLightboxHandler();
+      } else if (e.key === 'ArrowLeft') {
+        const newIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage(newIndex);
+      } else if (e.key === 'ArrowRight') {
+        const newIndex = (currentIndex + 1) % images.length;
+        showImage(newIndex);
+      }
+    }
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightboxHandler();
+    }
+  });
+</script>

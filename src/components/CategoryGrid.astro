@@ -1,0 +1,30 @@
+---
+const categories = [
+  { name: 'ארונות', image: '/images/closets.jpg', slug: 'closets' },
+  { name: 'חדר הורים', image: '/images/bedroom.jpg', slug: 'bedroom' },
+  { name: 'חדרי ילדים', image: '/images/kids-room.jpg', slug: 'kids-room' },
+  { name: 'ספריות', image: '/images/libraries.jpg', slug: 'libraries' },
+  { name: 'פינות אוכל', image: '/images/dining.jpg', slug: 'dining' },
+  { name: 'סלון', image: '/images/sofas.jpg', slug: 'living-room' },
+  { name: 'פינות עבודה', image: '/images/work.jpg', slug: 'work' },
+  { name: 'ריהוט משלים', image: '/images/accessories.jpg', slug: 'accessories' },
+  ];
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  {categories.map(category => (
+    <a 
+      href={`/category/${category.slug}`}
+      class="group relative overflow-hidden rounded-lg shadow-md aspect-w-16 aspect-h-9"
+    >
+      <img 
+        src={category.image} 
+        alt={category.name}
+        class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+        <h3 class="text-white text-xl font-bold">{category.name}</h3>
+      </div>
+    </a>
+  ))}
+</div>

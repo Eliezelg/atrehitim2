@@ -1,0 +1,71 @@
+{
+  "site": {
+    "title": "חנות רהיטים",
+    "description": "חנות רהיטים איכותית"
+  },
+  "nav": {
+    "home": "דף הבית",
+    "categories": {
+      "closets": "ארונות",
+      "bedroom": "חדר הורים",
+      "kids_room": "חדרי ילדים",
+      "libraries": "ספריות",
+      "dining": "פינות אוכל",
+      "sofas": "ספות",
+      "work": "פינות עבודה",
+      "accessories": "ריהוט משלים"
+    },
+    "subcategories": {
+      "opening_closets": "ארונות פתיחה",
+      "sliding_closets": "ארונות הזזה",
+      "closet_rooms": "חדרי ארונות",
+      "jewish_bed": "מיטה יהודית",
+      "double_bed": "מיטה זוגית",
+      "upholstered_beds": "מיטות מרופדות"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "ברוכים הבאים לחנות הרהיטים שלנו",
+      "subtitle": "מגוון רחב של רהיטים איכותיים לבית שלכם",
+      "cta": "לצפייה במוצרים"
+    },
+    "featured": {
+      "title": "מוצרים מובילים"
+    },
+    "categories": {
+      "title": "קטגוריות"
+    }
+  },
+  "contact": {
+    "title": "צור קשר לקבלת פרטים נוספים",
+    "form": {
+      "name": "שם מלא",
+      "phone": "טלפון",
+      "email": "אימייל",
+      "message": "הודעה",
+      "submit": "שלח פנייה"
+    }
+  },
+  "footer": {
+    "contact": {
+      "title": "צור קשר",
+      "phone": "טלפון: 123-456-789",
+      "email": "אימייל: info@furniture.com",
+      "address": "כתובת: רחוב הרהיטים 1, תל אביב"
+    },
+    "hours": {
+      "title": "שעות פעילות",
+      "weekdays": "ראשון - חמישי: 9:00 - 20:00",
+      "friday": "שישי: 9:00 - 14:00",
+      "saturday": "שבת: סגור"
+    },
+    "info": {
+      "title": "מידע נוסף",
+      "about": "אודות",
+      "shipping": "משלוחים",
+      "terms": "תנאי שימוש"
+    },
+    "rights": "כל הזכויות שמורות"
+  }
+}

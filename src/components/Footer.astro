@@ -1,0 +1,43 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-primary-800 text-white py-8">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-bold mb-4">צור קשר</h3>
+        <ul class="space-y-2">
+          <li>טלפון: 053-3934-699</li>
+          <li>אימייל: info@atrehitim.co.il</li>
+          <li><a href="/contact" class="hover:text-accent-500">דף יצירת קשר</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-4">שעות פעילות</h3>
+        <ul class="space-y-2">
+          <li>ראשון - חמישי: 9:00 - 20:00</li>
+          <li>שישי: 9:00 - 14:00</li>
+          <li>שבת: סגור</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-bold mb-4">מידע נוסף</h3>
+        <ul class="space-y-2">
+          <li><a href="/about" class="hover:text-accent-500">אודות</a></li>
+          <li><a href="/terms" class="hover:text-accent-500">תנאי שימוש</a></li>
+          <li><a href="/shipping" class="hover:text-accent-500">משלוחים</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center mt-8 pt-8 border-t border-primary-700">
+      <p> {currentYear} כל הזכויות שמורות</p>
+      <div class="mt-4 flex items-center justify-center gap-2 text-sm">
+        <span>אתר נוצר על ידי</span>
+        <a href="https://webpro450.co.il" target="_blank" rel="noopener noreferrer" class="hover:opacity-80">
+          <img src="/images/webpro-logo.jpg" alt="WebPro Logo" class="h-6" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

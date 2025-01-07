@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CategoryList from '../../components/categories/CategoryList.astro';
+import { categories } from '../../data/categories';
+
+const title = "קטגוריות | חנות רהיטים";
+---
+
+<Layout {title}>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-12 text-center">הקטגוריות שלנו</h1>
+    <CategoryList categories={categories} />
+  </div>
+</Layout>

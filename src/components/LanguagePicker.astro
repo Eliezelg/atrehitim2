@@ -1,0 +1,44 @@
+---
+import { getLanguageFromURL } from '../i18n/utils';
+
+const currentUrl = Astro.url;
+const currentLang = getLanguageFromURL(currentUrl.pathname);
+
+const languages = [
+  { code: 'he', name: 'עברית' },
+  { code: 'fr', name: 'Français' }
+];
+---
+
+<div class="relative inline-block text-left">
+  <select
+    id="language-select"
+    class="block w-full px-4 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+  >
+    {languages.map((lang) => (
+      <option
+        value={lang.code}
+        selected={currentLang === lang.code}
+      >
+        {lang.name}
+      </option>
+    ))}
+  </select>
+</div>
+
+<script>
+  const select = document.getElementById('language-select') as HTMLSelectElement;
+  
+  select.addEventListener('change', (e) => {
+    const target = e.target as HTMLSelectElement;
+    const newLang = target.value;
+    const currentPath = window.location.pathname;
+    
+    // Construire la nouvelle URL en préservant le chemin après le code de langue
+    const pathSegments = currentPath.split('/').filter(Boolean);
+    pathSegments[0] = newLang;
+    const newPath = `/${pathSegments.join('/')}`;
+    
+    window.location.href = newPath;
+  });
+</script>

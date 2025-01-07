@@ -1,0 +1,16 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import SubcategoryGrid from '../../../components/SubcategoryGrid.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const category = 'closets';
+const title = 'ארונות';
+---
+
+<Layout title={title}>
+  <div class="container mx-auto px-4 py-8">
+    <Breadcrumbs category={category} />
+    <h1 class="text-4xl font-bold mb-8">{title}</h1>
+    <SubcategoryGrid category={category} />
+  </div>
+</Layout>

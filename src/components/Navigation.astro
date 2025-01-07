@@ -1,0 +1,90 @@
+---
+import { categories } from '../data/categories';
+import MobileNavigation from './MobileNavigation.astro';
+---
+
+<nav>
+  <MobileNavigation />
+  
+  <ul class="hidden md:flex gap-6">
+    <li>
+      <a href="/" class="text-gray-800 hover:text-primary-600">דף הבית</a>
+    </li>
+    <li>
+      <a href="/categories" class="text-gray-800 hover:text-primary-600">קטגוריות</a>
+    </li>
+    {categories.map(category => (
+      <li class="group relative">
+        <a href={`/category/${category.slug}`} class="text-gray-800 hover:text-primary-600">
+          {category.name}
+        </a>
+        {category.subcategories.length > 0 && (
+          <div class="absolute hidden group-hover:block right-0 mt-2 z-50">
+            <div class="bg-white shadow-lg rounded-lg p-4 min-w-[200px]">
+              <ul class="space-y-2">
+                {category.subcategories.map(sub => (
+                  <li>
+                    <a 
+                      href={`/category/${category.slug}/${sub.slug}`} 
+                      class="block py-2 px-4 hover:bg-gray-100 rounded transition-colors"
+                    >
+                      {sub.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+      </li>
+    ))}
+    <li>
+      <a href="/contact" class="text-gray-800 hover:text-primary-600">צור קשר</a>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  .group:hover > div {
+    display: block;
+    animation: fadeIn 0.2s ease-in-out;
+  }
+
+  .group > div {
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .group > div:hover {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  const menuItems = document.querySelectorAll('.group');
+  
+  menuItems.forEach(item => {
+    let timeout: number;
+    
+    item.addEventListener('mouseenter', () => {
+      clearTimeout(timeout);
+      item.querySelector('div')?.classList.remove('hidden');
+    });
+
+    item.addEventListener('mouseleave', () => {
+      timeout = setTimeout(() => {
+        item.querySelector('div')?.classList.add('hidden');
+      }, 300);
+    });
+  });
+</script>

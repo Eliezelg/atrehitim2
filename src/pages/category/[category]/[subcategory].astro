@@ -1,0 +1,128 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import PhotoGallery from '../../../components/gallery/PhotoGallery.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+export const prerender = true;
+export function getStaticPaths() {
+  return [
+    // Closets
+    { params: { category: 'closets', subcategory: 'opening-closets' } },
+    { params: { category: 'closets', subcategory: 'sliding-closets' } },
+    { params: { category: 'closets', subcategory: 'closet-rooms' } },
+    { params: { category: 'closets', subcategory: 'game-closets' } },
+    
+    // Bedroom
+    { params: { category: 'bedroom', subcategory: 'bedrooms' } },
+    { params: { category: 'bedroom', subcategory: 'jewish-bed' } },
+    { params: { category: 'bedroom', subcategory: 'double-bed' } },
+    { params: { category: 'bedroom', subcategory: 'upholstered-beds' } },
+    { params: { category: 'bedroom', subcategory: 'single-and-half' } },
+    
+    // Kids Room
+    { params: { category: 'kids-room', subcategory: 'complete-kids-room' } },
+    { params: { category: 'kids-room', subcategory: 'youth-beds' } },
+    { params: { category: 'kids-room', subcategory: 'bunk-beds' } },
+    
+    // Libraries
+    { params: { category: 'libraries', subcategory: 'kodesh-libraries' } },
+    { params: { category: 'libraries', subcategory: 'modern-libraries' } },
+    
+    // Living Room
+    { params: { category: 'living-room', subcategory: 'guest-sofas' } },
+    { params: { category: 'living-room', subcategory: 'seating-systems' } },
+    { params: { category: 'living-room', subcategory: 'single-seat' } },
+    { params: { category: 'living-room', subcategory: 'tv-furniture' } },
+    { params: { category: 'living-room', subcategory: 'living-room-dresser' } },
+    { params: { category: 'living-room', subcategory: 'coffee-table' } },
+    
+    // Dining
+    { params: { category: 'dining', subcategory: 'dining-tables' } },
+    { params: { category: 'dining', subcategory: 'chairs' } },
+    
+    // Work
+    { params: { category: 'work', subcategory: 'wall-units' } },
+    { params: { category: 'work', subcategory: 'work-desks' } },
+    { params: { category: 'work', subcategory: 'desk-tops' } },
+    { params: { category: 'work', subcategory: 'under-desk-units' } },
+    { params: { category: 'work', subcategory: 'office-furniture' } },
+    
+    // Accessories
+    { params: { category: 'accessories', subcategory: 'vanity-mirror' } },
+    { params: { category: 'accessories', subcategory: 'shoe-cabinets' } },
+    { params: { category: 'accessories', subcategory: 'designer-dressers' } },
+    
+    // Extra Accessories
+    { params: { category: 'extra-accessories', subcategory: 'handles' } },
+    { params: { category: 'extra-accessories', subcategory: 'legs' } },
+    { params: { category: 'extra-accessories', subcategory: 'coating-tiles' } },
+    { params: { category: 'extra-accessories', subcategory: 'decorations' } }
+  ];
+}
+
+const { category, subcategory } = Astro.params;
+
+const subcategoryNames = {
+  // Closets
+  'opening-closets': 'ארונות פתיחה',
+  'sliding-closets': 'ארונות הזזה',
+  'closet-rooms': 'חדרי ארונות',
+  'game-closets': 'ארון משחקים',
+  
+  // Bedroom
+  'bedrooms': 'חדרי שינה',
+  'jewish-bed': 'מיטה יהודית',
+  'double-bed': 'מיטה זוגית',
+  'upholstered-beds': 'מיטות מרופדות',
+  'single-and-half': 'מיטה וחצי',
+  
+  // Kids Room
+  'complete-kids-room': 'חדר ילדים קומפלט',
+  'youth-beds': 'מיטות נוער',
+  'bunk-beds': 'מיטות קומתיים',
+  
+  // Libraries
+  'kodesh-libraries': 'ספריות קודש',
+  'modern-libraries': 'ספריות מודרני',
+  
+  // Living Room
+  'guest-sofas': 'ספות אירוח',
+  'seating-systems': 'מערכות ישיבה',
+  'single-seat': 'כורסאות',
+  'tv-furniture': 'ריהוט לטלויזיה',
+  'living-room-dresser': 'שידה לסלון',
+  'coffee-table': 'שולחן סלוני',
+  
+  // Dining
+  'dining-tables': 'שולחנות אוכל',
+  'chairs': 'כיסאות',
+  
+  // Work
+  'wall-units': 'כוורת לתלייה',
+  'work-desks': 'שולחנות עבודה',
+  'desk-tops': 'פלטות לשולחן עבודה',
+  'under-desk-units': 'יחידה שמתחת לפלטה',
+  'office-furniture': 'ריהוט משרדי',
+  
+  // Accessories
+  'vanity-mirror': 'טואלט ומראה',
+  'shoe-cabinets': 'ארונות נעליים',
+  'designer-dressers': 'שידות מעוצבות',
+  
+  // Extra Accessories
+  'handles': 'ידיות',
+  'legs': 'רגליים',
+  'coating-tiles': 'אריחי חיפוי',
+  'decorations': 'עיטורים'
+};
+
+const title = subcategoryNames[subcategory] || subcategory;
+---
+
+<Layout title={title}>
+  <div class="container mx-auto px-4 py-8">
+    <Breadcrumbs {category} {subcategory} />
+    <h1 class="text-4xl font-bold mb-8">{title}</h1>
+    <PhotoGallery folderPath={`images/${category}/${subcategory}`} />
+  </div>
+</Layout>

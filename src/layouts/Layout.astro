@@ -1,0 +1,43 @@
+---
+import '@fontsource/heebo';
+import Header from '../components/Header.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
+
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <SEO {title} {description} {image} />
+  </head>
+  <body class="bg-gray-50">
+    <Header />
+    <main class="min-h-screen container mx-auto px-4 py-8">
+      <slot />
+    </main>
+    <WhatsAppButton />
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --primary-color: #2B3A67;
+    --secondary-color: #496A81;
+    --accent-color: #66999B;
+  }
+  
+  html {
+    font-family: 'Heebo', sans-serif;
+  }
+</style>

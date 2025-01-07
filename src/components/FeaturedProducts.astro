@@ -1,0 +1,47 @@
+---
+const featuredProducts = [
+  {
+    id: 1,
+    name: 'ארון הזזה יוקרתי',
+    image: '/images/closet1.jpg',
+    description: 'ארון הזזה מודרני עם מראות',
+    category: 'ארונות הזזה'
+  },
+  {
+    id: 2,
+    name: 'מיטה זוגית מעוצבת',
+    image: '/images/bed1.jpg',
+    description: 'מיטה זוגית מרופדת בעיצוב חדשני',
+    category: 'מיטה זוגית'
+  },
+  {
+    id: 3,
+    name: 'ספריית קיר',
+    image: '/images/library1.jpg',
+    description: 'ספריית קיר מודולרית בהתאמה אישית',
+    category: 'ספריות'
+  }
+];
+---
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  {featuredProducts.map(product => (
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="aspect-w-16 aspect-h-9">
+        <img 
+          src={product.image} 
+          alt={product.name}
+          class="w-full h-64 object-cover"
+        />
+      </div>
+      <div class="p-6">
+        <h3 class="text-xl font-bold mb-2">{product.name}</h3>
+        <p class="text-gray-600 mb-4">{product.description}</p>
+        <div class="flex justify-between items-center">
+          <span class="text-sm text-primary-600">{product.category}</span>
+
+        </div>
+      </div>
+    </div>
+  ))}
+</div>

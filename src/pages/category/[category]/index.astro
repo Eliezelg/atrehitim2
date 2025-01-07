@@ -1,0 +1,26 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import SubcategoryGrid from '../../../components/SubcategoryGrid.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { category: 'closets' } },
+    { params: { category: 'bedroom' } },
+    { params: { category: 'kids-room' } },
+    { params: { category: 'libraries' } },
+    { params: { category: 'living-room' } },
+    { params: { category: 'dining' } },
+    { params: { category: 'work' } },
+    { params: { category: 'accessories' } },
+    { params: { category: 'extra-accessories' } }
+  ];
+}
+
+const { category } = Astro.params;
+---
+
+<Layout title={`קטגוריה: ${category}`}>
+  <Breadcrumbs {category} />
+  <SubcategoryGrid {category} />
+</Layout>

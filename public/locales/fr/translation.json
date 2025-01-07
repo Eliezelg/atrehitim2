@@ -1,0 +1,71 @@
+{
+  "site": {
+    "title": "Magasin de Meubles",
+    "description": "Magasin de meubles de qualité"
+  },
+  "nav": {
+    "home": "Accueil",
+    "categories": {
+      "closets": "Armoires",
+      "bedroom": "Chambre Parents",
+      "kids_room": "Chambres Enfants",
+      "libraries": "Bibliothèques",
+      "dining": "Salle à Manger",
+      "sofas": "Canapés",
+      "work": "Espaces de Travail",
+      "accessories": "Meubles Complémentaires"
+    },
+    "subcategories": {
+      "opening_closets": "Armoires à Portes Battantes",
+      "sliding_closets": "Armoires à Portes Coulissantes",
+      "closet_rooms": "Dressings",
+      "jewish_bed": "Lit Juif",
+      "double_bed": "Lit Double",
+      "upholstered_beds": "Lits Rembourrés"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Bienvenue dans notre magasin de meubles",
+      "subtitle": "Une large gamme de meubles de qualité pour votre maison",
+      "cta": "Voir les produits"
+    },
+    "featured": {
+      "title": "Produits Vedettes"
+    },
+    "categories": {
+      "title": "Catégories"
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous pour plus d'informations",
+    "form": {
+      "name": "Nom complet",
+      "phone": "Téléphone",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Envoyer"
+    }
+  },
+  "footer": {
+    "contact": {
+      "title": "Contact",
+      "phone": "Tél: 123-456-789",
+      "email": "Email: info@furniture.com",
+      "address": "Adresse: 1 Rue des Meubles, Tel Aviv"
+    },
+    "hours": {
+      "title": "Heures d'ouverture",
+      "weekdays": "Dimanche - Jeudi: 9h00 - 20h00",
+      "friday": "Vendredi: 9h00 - 14h00",
+      "saturday": "Samedi: Fermé"
+    },
+    "info": {
+      "title": "Informations",
+      "about": "À propos",
+      "shipping": "Livraison",
+      "terms": "Conditions d'utilisation"
+    },
+    "rights": "Tous droits réservés"
+  }
+}

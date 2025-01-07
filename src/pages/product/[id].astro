@@ -1,0 +1,82 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+export function getStaticPaths() {
+  // This would typically come from a database or CMS
+  const products = [
+    {
+      id: '1',
+      name: 'ארון הזזה 4 דלתות',
+      description: 'ארון הזזה מפואר עם מראות ותאורה LED פנימית',
+      features: [
+        'דלתות הזזה שקטות',
+        'תאורת LED פנימית',
+        'מראות מלאות',
+        'מגירות פנימיות'
+      ],
+      images: [
+        '/images/products/closet-1-main.jpg',
+        '/images/products/closet-1-detail-1.jpg',
+        '/images/products/closet-1-detail-2.jpg'
+      ],
+      category: 'ארונות',
+      subcategory: 'ארונות הזזה'
+    }
+    // Add more products
+  ];
+
+  return products.map(product => ({
+    params: { id: product.id },
+    props: { product }
+  }));
+}
+
+const { product } = Astro.props;
+---
+
+<Layout title={product.name}>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <div class="space-y-6">
+      <div class="bg-white p-4 rounded-lg shadow-md">
+        <img 
+          src={product.images[0]} 
+          alt={product.name}
+          class="w-full h-auto rounded"
+        />
+      </div>
+      <div class="grid grid-cols-3 gap-4">
+        {product.images.slice(1).map(image => (
+          <img 
+            src={image} 
+            alt={product.name}
+            class="w-full h-32 object-cover rounded cursor-pointer hover:opacity-80 transition-opacity"
+          />
+        ))}
+      </div>
+    </div>
+    
+    <div class="space-y-8">
+      <div>
+        <h1 class="text-3xl font-bold mb-4">{product.name}</h1>
+        <p class="text-gray-600 mb-4">{product.description}</p>
+        <div class="flex gap-2 text-sm text-gray-500">
+          <span>{product.category}</span>
+          <span>/</span>
+          <span>{product.subcategory}</span>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold mb-4">מאפיינים</h2>
+        <ul class="list-disc list-inside space-y-2">
+          {product.features.map(feature => (
+            <li>{feature}</li>
+          ))}
+        </ul>
+      </div>
+
+      <ContactForm productName={product.name} />
+    </div>
+  </div>
+</Layout>

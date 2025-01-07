@@ -1,0 +1,82 @@
+---
+interface Props {
+  category: string;
+}
+
+const { category } = Astro.props;
+
+const subcategories = {
+  'closets': [
+    { name: 'ארונות פתיחה', slug: 'opening-closets', image: '/images/subcategories/opening-closets.jpg' },
+    { name: 'ארונות הזזה', slug: 'sliding-closets', image: '/images/subcategories/sliding-closets.jpg' },
+    { name: 'חדרי ארונות', slug: 'closet-rooms', image: '/images/subcategories/closet-rooms.jpg' },
+    { name: 'ארון משחקים', slug: 'game-closets', image: '/images/subcategories/game-closets.jpg' }
+  ],
+  'bedroom': [
+    { name: 'חדרי שינה', slug: 'bedrooms', image: '/images/subcategories/bedrooms.jpg' },
+    { name: 'מיטה יהודית', slug: 'jewish-bed', image: '/images/subcategories/jewish-bed.jpg' },
+    { name: 'מיטה זוגית', slug: 'double-bed', image: '/images/subcategories/double-bed.jpg' },
+    { name: 'מיטות מרופדות', slug: 'upholstered-beds', image: '/images/subcategories/upholstered-beds.jpg' },
+    { name: 'מיטה וחצי', slug: 'single-and-half', image: '/images/subcategories/single-and-half.jpg' }
+  ],
+  'kids-room': [
+    { name: 'חדר ילדים קומפלט', slug: 'complete-kids-room', image: '/images/subcategories/complete-kids-room.jpg' },
+    { name: 'מיטות נוער', slug: 'youth-beds', image: '/images/subcategories/youth-beds.jpg' },
+    { name: 'מיטות קומתיים', slug: 'bunk-beds', image: '/images/subcategories/bunk-beds.jpg' }
+  ],
+  'libraries': [
+    { name: 'ספריות קודש', slug: 'kodesh-libraries', image: '/images/subcategories/kodesh-libraries.jpg' },
+    { name: 'ספריות מודרני', slug: 'modern-libraries', image: '/images/subcategories/modern-libraries.jpg' }
+  ],
+  'living-room': [
+    { name: 'ספות אירוח', slug: 'guest-sofas', image: '/images/subcategories/guest-sofas.jpg' },
+    { name: 'מערכות ישיבה', slug: 'seating-systems', image: '/images/subcategories/seating-systems.jpg' },
+    { name: 'כורסאות', slug: 'single-seat', image: '/images/subcategories/single-seat.jpg' },
+    { name: 'ריהוט לטלויזיה', slug: 'tv-furniture', image: '/images/subcategories/tv-furniture.jpg' },
+    { name: 'שידה לסלון', slug: 'living-room-dresser', image: '/images/subcategories/living-room-dresser.jpg' },
+    { name: 'שולחן סלוני', slug: 'coffee-table', image: '/images/subcategories/coffee-table.jpg' }
+  ],
+  'dining': [
+    { name: 'שולחנות אוכל', slug: 'dining-tables', image: '/images/subcategories/dining-tables.jpg' },
+    { name: 'כיסאות', slug: 'chairs', image: '/images/subcategories/chairs.jpg' }
+  ],
+  'work': [
+    { name: 'כוורת לתלייה', slug: 'wall-units', image: '/images/subcategories/wall-units.jpg' },
+    { name: 'שולחנות עבודה', slug: 'work-desks', image: '/images/subcategories/work-desks.jpg' },
+    { name: 'פלטות לשולחן עבודה', slug: 'desk-tops', image: '/images/subcategories/desk-tops.jpg' },
+    { name: 'יחידה שמתחת לפלטה', slug: 'under-desk-units', image: '/images/subcategories/under-desk-units.jpg' },
+    { name: 'ריהוט משרדי', slug: 'office-furniture', image: '/images/subcategories/office-furniture.jpg' }
+  ],
+  'accessories': [
+    { name: 'טואלט ומראה', slug: 'vanity-mirror', image: '/images/subcategories/vanity-mirror.jpg' },
+    { name: 'ארונות נעליים', slug: 'shoe-cabinets', image: '/images/subcategories/shoe-cabinets.jpg' },
+    { name: 'שידות מעוצבות', slug: 'designer-dressers', image: '/images/subcategories/designer-dressers.jpg' }
+  ],
+  'extra-accessories': [
+    { name: 'ידיות', slug: 'handles', image: '/images/subcategories/handles.jpg' },
+    { name: 'רגליים', slug: 'legs', image: '/images/subcategories/legs.jpg' },
+    { name: 'אריחי חיפוי', slug: 'coating-tiles', image: '/images/subcategories/coating-tiles.jpg' },
+    { name: 'עיטורים', slug: 'decorations', image: '/images/subcategories/decorations.jpg' }
+  ]
+}[category] || [];
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  {subcategories.map(subcategory => (
+    <a 
+      href={`/category/${category}/${subcategory.slug}`}
+      class="group bg-white rounded-lg shadow-md overflow-hidden"
+    >
+      <div class="relative aspect-w-16 aspect-h-9">
+        <img 
+          src={subcategory.image} 
+          alt={subcategory.name}
+          class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+      </div>
+      <div class="p-4">
+        <h3 class="text-xl font-bold text-center">{subcategory.name}</h3>
+      </div>
+    </a>
+  ))}
+</div>

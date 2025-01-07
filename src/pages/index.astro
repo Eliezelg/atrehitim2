@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FeaturedProducts from '../components/FeaturedProducts.astro';
+import CategoryGrid from '../components/CategoryGrid.astro';
+---
+
+<Layout title="א.ת. רהיטים | דף הבית">
+  <section class="hero-section relative h-[600px] mb-12">
+    <div class="absolute inset-0">
+      <img 
+        src="/images/furniture-hero.jpg" 
+        alt="Modern furniture showcase" 
+        class="w-full h-full object-cover"
+      />
+      <!-- Overlay gradient on top of the image -->
+      <div class="absolute inset-0 bg-gradient-to-r from-primary-900/80 to-primary-800/60">
+        <div class="container mx-auto px-4 h-full flex items-center">
+          <div class="max-w-2xl text-white">
+            <h1 class="text-5xl font-bold mb-6">ברוכים הבאים לא.ת. רהיטים</h1>
+            <p class="text-xl mb-8">מגוון רחב של רהיטים איכותיים לבית שלכם</p>
+            <a href="/categories" class="bg-accent-500 text-white px-8 py-3 rounded-lg hover:bg-accent-600 transition-colors">
+              לצפייה במוצרים
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-16">
+    <h2 class="text-3xl font-bold text-center mb-8">מוצרים מובילים</h2>
+    <FeaturedProducts />
+  </section>
+
+  <section>
+    <h2 class="text-3xl font-bold text-center mb-8">קטגוריות</h2>
+    <CategoryGrid />
+  </section>
+</Layout>
