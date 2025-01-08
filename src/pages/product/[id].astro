@@ -2,6 +2,8 @@
 import Layout from '../../layouts/Layout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 
+export const prerender = true;
+
 export function getStaticPaths() {
   // This would typically come from a database or CMS
   const products = [
@@ -33,6 +35,7 @@ export function getStaticPaths() {
 }
 
 const { product } = Astro.props;
+
 ---
 
 <Layout title={product.name}>

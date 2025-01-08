@@ -3,6 +3,8 @@ import Layout from '../../../layouts/Layout.astro';
 import SubcategoryGrid from '../../../components/SubcategoryGrid.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 
+export const prerender = true;
+
 export function getStaticPaths() {
   return [
     { params: { category: 'closets' } },
