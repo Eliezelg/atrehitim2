@@ -3,6 +3,7 @@ import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 import node from '@astrojs/node';
 import sitemap from '@astrojs/sitemap';
+import partytown from '@astrojs/partytown';
 
 export default defineConfig({
   integrations: [
@@ -16,6 +17,11 @@ export default defineConfig({
       changefreq: 'weekly',
       priority: 0.7,
       lastmod: new Date()
+    }),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"]
+      },
     })
   ],
   output: 'server',
