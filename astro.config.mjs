@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import astroI18next from "astro-i18next";
 import react from '@astrojs/react';
-import node from '@astrojs/node'; // Ajoutez cette ligne
+import node from '@astrojs/node';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   integrations: [
@@ -12,12 +12,10 @@ export default defineConfig({
       experimentalReactChildren: true
     }),
     tailwind(),
-    astroI18next({
-      i18next: {
-        supportedLngs: ["he", "fr"],
-        defaultLocale: "he",
-        fallbackLng: "he"
-      }
+    sitemap({
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date()
     })
   ],
   output: 'server',
@@ -42,5 +40,4 @@ export default defineConfig({
       entrypoint: 'astro/assets/services/sharp'
     }
   }
-
 });

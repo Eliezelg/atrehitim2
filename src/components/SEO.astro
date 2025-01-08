@@ -4,6 +4,8 @@ interface Props {
   description?: string;
   image?: string;
   canonicalURL?: string;
+  keywords?: string;
+  author?: string;
 }
 
 const {
@@ -11,6 +13,8 @@ const {
   description = "חנות רהיטים איכותית עם מגוון רחב של רהיטים לבית",
   image = "/images/og-image.jpg",
   canonicalURL = Astro.url.href,
+  keywords = "רהיטים, חנות רהיטים, רהיטים לבית, ריהוט, עיצוב הבית",
+  author = "Atrehitim",
 } = Astro.props;
 
 const socialImageURL = new URL(image, Astro.url.origin).href;
@@ -29,6 +33,9 @@ const socialImageURL = new URL(image, Astro.url.origin).href;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content={author} />
+<meta name="language" content="he" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -36,6 +43,8 @@ const socialImageURL = new URL(image, Astro.url.origin).href;
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={socialImageURL} />
+<meta property="og:locale" content="he_IL" />
+<meta property="og:site_name" content="Atrehitim" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -47,4 +56,24 @@ const socialImageURL = new URL(image, Astro.url.origin).href;
 <!-- Additional Meta Tags -->
 <meta name="format-detection" content="telephone=no" />
 <meta name="theme-color" content="#2B3A67" />
-<meta name="robots" content="index, follow" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="googlebot" content="index, follow" />
+<meta name="rating" content="general" />
+<meta name="revisit-after" content="7 days" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<!-- Preconnect to Important Third-party Resources -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- JSON-LD Schema -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Atrehitim",
+    "url": "${Astro.url.origin}",
+    "logo": "${Astro.url.origin}/images/logo.png",
+    "description": "${description}"
+  }
+</script>
